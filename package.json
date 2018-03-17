@@ -1,0 +1,22 @@
+{
+  "name": "beacon_gcf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namityo/beacon_gcf.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/namityo/beacon_gcf/issues"
+  },
+  "homepage": "https://github.com/namityo/beacon_gcf#readme",
+  "dependencies": {
+    "@google-cloud/datastore": "^1.3.5"
+  }
+}

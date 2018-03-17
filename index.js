@@ -1,0 +1,1 @@
+exports.beaconSubscribe = require("./functions/pubsub")

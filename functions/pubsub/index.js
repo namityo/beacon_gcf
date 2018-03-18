@@ -12,7 +12,7 @@ module.exports = (event, callback) => {
             if (err) console.log(err); 
         });
     } else {
-        console.log("Invalid data was entered.");
+        console.log("Invalid data was entered." + JSON.stringify(pubsubMessage));
     }
 
     callback();

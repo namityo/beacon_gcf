@@ -3,7 +3,8 @@ const beaconlog = require('../../lib/datastore/beaconlog')
 
 module.exports = (event, callback) => {
     const pubsubMessage = event.data
-    const data = pubsubMessage.data ? Buffer.from(pubsubMessage.data, 'base64').toString() : {};
+    const dataString = pubsubMessage.data ? Buffer.from(pubsubMessage.data, 'base64').toString() : "{}";
+    const data = JSON.parse(dataString);
 
     // データチェック
     if (checkData(data)) {

@@ -3,16 +3,17 @@ const beaconlog = require('../../lib/datastore/beaconlog')
 
 module.exports = (event, callback) => {
     const pubsubMessage = event.data
+    const data = pubsubMessage.data ? Buffer.from(pubsubMessage.data, 'base64').toString() : {};
 
     // データチェック
-    if (checkData(pubsubMessage)) {
+    if (checkData(data)) {
 
         // 登録
-        beaconlog.add(pubsubMessage, (err) => {
+        beaconlog.add(data, (err) => {
             if (err) console.log(err); 
         });
     } else {
-        console.log("Invalid data was entered." + JSON.stringify(pubsubMessage));
+        console.log("Invalid data was entered." + JSON.stringify(data));
     }
 
     callback();

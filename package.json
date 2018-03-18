@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/namityo/beacon_gcf#readme",
   "dependencies": {
-    "@google-cloud/datastore": "^1.3.5"
+    "@google-cloud/datastore": "^1.3.5",
+    "@google-cloud/pubsub": "^0.16.5"
   }
 }

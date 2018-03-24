@@ -7,8 +7,12 @@ function registerBeaconLog(req, res) {
 
     if (checkData(json)) {
         pubsubBeaconLog.publish(json, (err) => {
-            console.log(err);
-            res.status(500).send({ error: 'system error.'});
+            if (err) {
+                console.log(err);
+                res.status(500).send({ error: 'system error.'});
+            } else {
+                res.status(200).end()
+            }
         });
     } else {
         res.status(500).send({ error: 'validate error.' });
@@ -17,19 +21,20 @@ function registerBeaconLog(req, res) {
 
 
 function handleGET(req, res) {
-    res.status(500).send({ error: 'not support.' });
+    res.status(500).send({ error: 'not support GET.' });
 }
 
-function handelPUT(req, res) {
+function handlePUT(req, res) {
     switch (req.get('content-type')) {
         case 'application/json':
             registerBeaconLog(req, res);
             break;
         default:
-            res.status(500).send({ error: 'not support.' });
+            res.status(500).send({ error: 'not support content-type.' });
             break;
     }
 }
+
 
 module.exports = (req, res) => {
     switch (req.method) {

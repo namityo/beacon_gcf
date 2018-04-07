@@ -1,4 +1,5 @@
 const pubsubBeaconLog = require('../../lib/pubsub/beaconlog')
+const datastoreBeaconLog = require('../../lib/datastore/beaconlog')
 const checkData = require('../../lib/helper/validator').checkData;
 
 
@@ -21,7 +22,15 @@ function registerBeaconLog(req, res) {
 
 
 function handleGET(req, res) {
-    res.status(500).send({ error: 'not support GET.' });
+    let param = {};
+    if (req.query['detector'] != null) param.detector = req.query['detector'];
+    if (req.query['uuid'] != null)     param.uuid = req.query['uuid'];
+    if (req.query['date_lt'] != null)  param.date_lt = new Date(req.query['date_lt']);
+    if (req.query['date_gt'] != null)  param.date_gt = new Date(req.query['date_gt']);
+
+    datastoreBeaconLog.get(param, (results) => {
+        res.status(200).send(results);
+    });
 }
 
 function handlePUT(req, res) {

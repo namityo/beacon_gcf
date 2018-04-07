@@ -1,0 +1,20 @@
+indexes:
+
+- kind: BeaconLog
+  properties:
+  - name: detector
+  - name: created
+    direction: desc
+
+- kind: BeaconLog
+  properties:
+  - name: uuid
+  - name: created
+    direction: desc
+
+- kind: BeaconLog
+  properties:
+  - name: detector
+  - name: uuid
+  - name: created
+    direction: desc

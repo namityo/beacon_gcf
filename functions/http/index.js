@@ -29,6 +29,10 @@ function handleGET(req, res) {
     if (req.query['date_gt'] != null)  param.date_gt = new Date(req.query['date_gt']);
 
     datastoreBeaconLog.get(param, (results) => {
+        // Access-Control-Allow-Origin enable
+        res.set('Access-Control-Allow-Origin', "*")
+        res.set('Access-Control-Allow-Methods', 'GET')
+        
         res.status(200).send(results);
     });
 }
